@@ -1,0 +1,45 @@
+---
+
+cluster:
+  worker_nodes_count : 2
+  instance_type: c5.large
+  autoterminate_minutes: 30
+
+evaluation_options:
+  #data_path: files/iris_data_sample.csv
+  data_path: https://s3-us-west-2.amazonaws.com/auger-experiments/datasets/openml/data_raw/dataset_537.arff
+  # data_extension: ".csv"
+  # data_compression: gzip
+  featureColumns:
+    - median_income
+    - housing_median_age
+    - total_rooms
+    - total_bedrooms
+    - population
+    - households
+    - latitude
+    - longitude
+
+  target_feature: median_house_value
+  #categoricalFeatures:
+
+  label_encoding_features: []
+  datetime_features: []
+  time_series_features: []
+  classification: false
+  binary_classification: false
+  scoring: neg_rmse
+
+  cross_validation_folds: 5
+  max_total_time_mins: 60
+  max_eval_time_mins: 1
+  max_n_trials: 10
+
+  use_ensemble: true
+
+  # optimizers_names: []
+  # split_options: {}
+  # oversampling: {}
+  # search_space: 
+  # use_ensemble: true
+  # preprocessors: {}

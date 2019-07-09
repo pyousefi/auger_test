@@ -1,0 +1,49 @@
+---
+#optional parameters
+#organization: iqvia
+#project: <project name>
+#experiment: give-me-some-credit
+
+cluster:
+  worker_type_id: 1
+  workers_count: 2
+  autoterminate_minutes: 15
+
+evaluation_options:
+  data_path: files/cs_training.csv
+  # data_path: https://www.openml.org/data/download/8/dataset_8_liver-disorders.arff
+  # data_extension: ".csv"
+  # data_compression: gzip
+  feature_columns:
+    - RevolvingUtilizationOfUnsecuredLines
+    - age
+    - NumberOfTime30-59DaysPastDueNotWorse
+    - DebtRatio
+    - MonthlyIncome
+    - NumberOfOpenCreditLinesAndLoans
+    - NumberOfTimes90DaysLate
+    - NumberRealEstateLoansOrLines
+    - NumberOfTime60-89DaysPastDueNotWorse
+    - NumberOfDependents
+  target_feature: SeriousDlqin2yrs
+
+  label_encoding_features: []
+  datetime_features: []
+  time_series_features: []
+  classification: true
+  binary_classification: true
+  scoring: accuracy
+
+  cross_validation_folds: 5
+  max_total_time_mins: 60
+  max_eval_time_mins: 1
+  max_n_trials: 10
+
+  use_ensemble: true
+
+  # optimizers_names: []
+  # split_options: {}
+  # oversampling: {}
+  # search_space: 
+  # use_ensemble: true
+  # preprocessors: {}
